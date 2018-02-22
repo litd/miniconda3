@@ -1,4 +1,4 @@
-# % Last Change: Thu Feb 22 11:55:10 AM 2018 CST
+# % Last Change: Thu Feb 22 12:05:30 PM 2018 CST
 # Base Image
 FROM alpine:3.7
 
@@ -9,7 +9,7 @@ LABEL maintainer="Tiandao Li <litd99@gmail.com>"
 RUN apk add bash && \
 	wget --quiet https://repo.continuum.io/miniconda/Miniconda3-4.3.30-Linux-x86_64.sh -O ~/miniconda.sh && \
 	/bin/bash ~/miniconda.sh -bfp /opt/conda && \
-	rm ~/miniconda.sh
+	rm ~/miniconda.sh && \
 	rm -rf /var/lib/apk/lists/* && \
 	rm -rf /var/cache/apk/*
 
