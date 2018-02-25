@@ -1,4 +1,4 @@
-# % Last Change: Fri Feb 23 01:51:46 AM 2018 CST
+# % Last Change: Sat Feb 24 10:12:08 PM 2018 CST
 # Base Image
 FROM alpine:3.7
 
@@ -43,8 +43,10 @@ ENV SHELL=/bin/bash
 #	conda clean --all --yes
 
 # set timezone
-RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime && \
-	echo "America/Chicago" > /etc/timezone
+RUN apk add tzdata && \
+	ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime && \
+	echo "America/Chicago" > /etc/timezone && \
+	ape del tzdata
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
